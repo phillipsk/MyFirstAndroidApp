@@ -5,27 +5,34 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
 
-public class MyActivity extends ActionBarActivity {
-
-    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.Message";
+public class DisplayMessageActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
-    }
+        // removed per tutorial instructions
+        // setContentView(R.layout.activity_display_message);
 
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        textView.setText(message);
+
+        setContentView(textView);
+    }
+/* NOT NEEDED FOR THIS APP -- MYFIRSTAPP
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my, menu);
+        getMenuInflater().inflate(R.menu.menu_display_message, menu);
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -40,15 +47,4 @@ public class MyActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    // METHOD **METHOD** Called when the user clicks the Send button
-    public void sendMessage(View view){
-        // Do something in response
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message); //added EXTRA_MESSAGE definition to main public class
-        startActivity(intent);
-    }
-
 }

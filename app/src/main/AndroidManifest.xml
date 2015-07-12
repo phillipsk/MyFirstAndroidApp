@@ -16,6 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--added "@style/Theme.AppCompat.Light" per actionbar tutorial-->
+        <!--android:theme="@style/Theme.AppCompat.Light"-->
+        <activity
+            android:name=".DisplayMessageActivity"
+            android:label="@string/title_activity_display_message"
+
+            android:parentActivityName=".MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tech_ministry.myfirstapp.MyActivity" />
+        </activity>
     </application>
+
+    <!--added "@style/Theme.AppCompat.Light" per actionbar tutorial-->
+    <!--<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="22" />-->
 
 </manifest>
